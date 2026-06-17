@@ -25,6 +25,9 @@ async function main() {
   const app = express();
 
   app.disable('x-powered-by');
+  // Behind a reverse proxy (nginx / ELB), trust X-Forwarded-* so req.ip is the
+  // real client and IP-based rate limiting / logging are correct.
+  app.set('trust proxy', true);
   app.use(express.json({ limit: '256kb' }));
 
   // --- trace context + per-request logger + client identity ---------------
