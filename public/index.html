@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Job Processing Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <header>
+      <h1>Job Processing Dashboard</h1>
+      <span id="conn" class="conn">disconnected</span>
+    </header>
+
+    <main>
+      <section class="box">
+        <h2>Submit Job</h2>
+        <div class="row">
+          <label>Client ID</label>
+          <input id="clientId" value="acme-co" />
+        </div>
+        <div class="row">
+          <label>Type</label>
+          <select id="type">
+            <option>image-resize</option>
+            <option>report-gen</option>
+            <option>data-export</option>
+            <option>email-batch</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Priority</label>
+          <select id="priority">
+            <option>HIGH</option>
+            <option selected>NORMAL</option>
+            <option>LOW</option>
+          </select>
+        </div>
+        <div class="row">
+          <label>Count</label>
+          <input id="count" type="number" value="1" min="1" max="200" />
+        </div>
+        <div class="row">
+          <button id="submitBtn">Submit</button>
+          <button id="burstBtn">Burst x25</button>
+        </div>
+        <p id="submitMsg" class="msg"></p>
+      </section>
+
+      <section class="box">
+        <h2>Queue &amp; Workers</h2>
+        <table class="stats">
+          <tr><td>HIGH</td><td id="d-HIGH" class="num">0</td></tr>
+          <tr><td>NORMAL</td><td id="d-NORMAL" class="num">0</td></tr>
+          <tr><td>LOW</td><td id="d-LOW" class="num">0</td></tr>
+          <tr><td>Active workers</td><td id="active" class="num">0</td></tr>
+          <tr><td>Capacity</td><td id="capacity" class="num">0</td></tr>
+          <tr><td>Clients running</td><td id="clientsRunning" class="num">0</td></tr>
+        </table>
+      </section>
+
+      <section class="box">
+        <h2>Throughput</h2>
+        <table class="stats">
+          <tr><td>Submitted</td><td id="c-submitted" class="num">0</td></tr>
+          <tr><td>Completed</td><td id="c-completed" class="num">0</td></tr>
+          <tr><td>Retries</td><td id="c-retrying" class="num">0</td></tr>
+          <tr><td>Failed</td><td id="c-failed" class="num">0</td></tr>
+          <tr><td>Rate-limited</td><td id="c-limited" class="num">0</td></tr>
+        </table>
+        <a href="/metrics" target="_blank">View /metrics</a>
+      </section>
+
+      <section class="box wide">
+        <h2>Live Job Stream <small>(Server-Sent Events)</small></h2>
+        <table class="feed">
+          <thead>
+            <tr>
+              <th>Job</th><th>Client</th><th>Type</th><th>Priority</th>
+              <th>Status</th><th>Attempt</th><th>Detail</th><th>Time</th>
+            </tr>
+          </thead>
+          <tbody id="feed"></tbody>
+        </table>
+      </section>
+    </main>
+
+    <script src="/app.js"></script>
+  </body>
+</html>

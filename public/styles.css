@@ -1,0 +1,100 @@
+/* Simple dashboard: white background, black text, plain borders. */
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  background: #ffffff;
+  color: #000000;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 16px 24px;
+  border-bottom: 1px solid #000;
+}
+header h1 { font-size: 18px; margin: 0; }
+
+.conn {
+  font-size: 12px;
+  border: 1px solid #000;
+  padding: 3px 10px;
+}
+.conn.on { background: #000; color: #fff; }
+
+main {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 16px;
+  padding: 24px;
+  width: 100%;
+}
+.wide { grid-column: 1 / -1; }
+@media (max-width: 800px) {
+  main { grid-template-columns: 1fr; }
+}
+
+.box {
+  border: 1px solid #000;
+  padding: 16px;
+}
+.box h2 {
+  font-size: 14px;
+  margin: 0 0 12px;
+  border-bottom: 1px solid #000;
+  padding-bottom: 6px;
+}
+.box h2 small { font-weight: normal; color: #555; }
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+.row label { width: 80px; }
+input, select {
+  flex: 1;
+  padding: 6px 8px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  font-size: 14px;
+}
+button {
+  padding: 7px 14px;
+  border: 1px solid #000;
+  background: #fff;
+  color: #000;
+  cursor: pointer;
+  font-size: 14px;
+}
+button:hover { background: #000; color: #fff; }
+.msg { font-size: 12px; color: #555; min-height: 16px; margin: 8px 0 0; }
+
+table.stats { width: 100%; border-collapse: collapse; }
+table.stats td {
+  padding: 5px 4px;
+  border-bottom: 1px solid #ddd;
+}
+.num { text-align: right; font-family: monospace; }
+
+a { color: #000; }
+
+table.feed {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13px;
+}
+table.feed th, table.feed td {
+  border: 1px solid #000;
+  padding: 6px 8px;
+  text-align: left;
+}
+table.feed th { background: #f0f0f0; }
+.mono { font-family: monospace; }
