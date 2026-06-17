@@ -4,7 +4,7 @@ A production-grade Node.js REST API that accepts job submissions, processes them
 asynchronously through a **priority queue**, enforces **per-client rate limits**
 (sliding window), streams **real-time status via SSE**, and ships a full
 **observability layer** (structured JSON logs, Prometheus metrics, W3C Trace
-Context propagation) — plus a **light/dark dashboard**.
+Context propagation)
 
 > Runs with **zero infrastructure** out of the box (in-memory store). Point it at
 > Redis with one env var for persistence + horizontal scale.
